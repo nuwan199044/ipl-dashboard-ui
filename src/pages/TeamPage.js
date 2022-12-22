@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 import "./TeamPage.scss";
 
 const TeamPage = () => {
-  const [team, setTeam] = useState({ matches: [] });
+  const [team, setTeam] = useState({ matches: [], totalMatches: 0, totalWins:0 });
   const { teamName } = useParams();
 
   useEffect(() => {
     const fetchTeam = async () => {
-      const response = await fetch(`http://localhost:8080/team/${teamName}`);
+      const response = await fetch(`/team/${teamName}`);
       const data = await response.json();
       setTeam(data);
     };
